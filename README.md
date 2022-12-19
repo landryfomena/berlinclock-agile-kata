@@ -25,6 +25,8 @@ output: 13:17:1
 * framework spring 
 * Tests Junit
 * view thymeleaf. 
-![image](https://user-images.githubusercontent.com/36473921/208363592-96698f52-a410-4bfc-b625-4cc9893200d2.png)
-![image](https://user-images.githubusercontent.com/36473921/208363849-e7492b7d-c3d5-4b61-83fd-836dabec6a33.png)
+![image](https://user-images.githubusercontent.com/36473921/208371731-c2bf749d-ed01-408f-a57b-b5eabb40b767.png)
+
+![image](https://user-images.githubusercontent.com/36473921/208371357-1aef0741-5572-4dce-b90e-df288acefa98.png)
+
 
