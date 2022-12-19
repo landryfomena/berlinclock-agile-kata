@@ -29,4 +29,7 @@ output: 13:17:1
 
 ![image](https://user-images.githubusercontent.com/36473921/208371357-1aef0741-5572-4dce-b90e-df288acefa98.png)
 
+test file 
+
+https://github.com/landryfomena/berlinclock-agile-kata/blob/master/src/test/java/com/example/agilekata/AgileKataApplicationTests.java
 
