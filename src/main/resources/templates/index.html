@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Route database</title>
+</head>
+<body>
+<h1>Convert Digital to Berlin time </h1>
+
+<form method="POST" th:action="@{/timeConverter/berlin}">
+    <h4>Enter your route</h4>
+
+    <label for="digital_time">Add a digital timpe</label>
+    <input placeholder="SS:MM:SS" type="text" name="digital_time" id="digital_time"/>
+    <button type="submit">Submit</button>
+
+</form>
+<h2>Converted Digital time to Berlin time <span th:text="${converted_berlin_time}"></span></h2>
+<hr/>
+<hr/>
+<h1>Convert Berlin to Digital time </h1>
+
+<form method="POST" th:action="@{/timeConverter/digital}">
+    <h4>Enter your route</h4>
+
+    <label for="berlin_time">Route name</label>
+    <input type="text" placeholder="ORROORRROYYROOOOOOOOYYOO" name="berlin_time" id="berlin_time"/>
+    <button type="submit">Submit</button>
+
+</form>
+
+<h2>Converted Berlin time  to Digital time <span th:text="${converted_digital_time}"></span></h2>
+
+<p><a href="/">Home</a></p>
+</body>
+</html>
