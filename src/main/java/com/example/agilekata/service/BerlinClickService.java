@@ -9,6 +9,11 @@ import java.util.stream.IntStream;
 
 @Service
 public class BerlinClickService {
+    /**
+     *
+     * @param digitalTime
+     * @return
+     */
     public static String digitalTimeToBerlinTime(String digitalTime) {
         validateDigitaltime(digitalTime);
         List<String> time = Arrays.asList(digitalTime.split(":"));
@@ -19,6 +24,10 @@ public class BerlinClickService {
         return berlinClock(getHours(hours), getMinutes(minutes), getSeconds(seconds));
     }
 
+    /**
+     * validation of the digital time added
+     * @param digitalTime
+     */
     private static void validateDigitaltime(String digitalTime) {
         List<String> time = Arrays.asList(digitalTime.split(":"));
         if (time.size() != 3) {
@@ -33,13 +42,12 @@ public class BerlinClickService {
 
     }
 
-    private static void validateBerlinTime(String berlinTime) {
-        if(berlinTime.length()!=24){
-            throw new IllegalArgumentException("berlin time format is ORROORRROYYROOOOOOOOYYOO");
-        };
-    }
 
-
+    /**
+     *
+     * @param hours
+     * @return
+     */
     public static String getHours(int hours) {
         int numberTopHourLamps = hours / 5;
         int numberBottomHourLamps = hours % 5;
@@ -51,6 +59,11 @@ public class BerlinClickService {
         return sb.toString();
     }
 
+    /**
+     *
+     * @param berlinTime
+     * @return
+     */
     public static String getDigitalTimeFromBerlinTime(String berlinTime) {
         if (berlinTime.length() != 24) {
             throw new IllegalArgumentException("Berlin clock is made up of 24 digits you passed " + berlinTime.length());
@@ -71,10 +84,22 @@ public class BerlinClickService {
 
     }
 
+    /**
+     *
+     * @param seconds
+     * @return
+     */
     public static String getSeconds(int seconds) {
         return seconds % 2 == 0 ? "Y" : "O";
     }
 
+    /**
+     *
+     * @param totalNumberLamps
+     * @param numberLampsOn
+     * @param lampSymbol
+     * @return
+     */
 
     private static String getLampRow(int totalNumberLamps, int numberLampsOn, String lampSymbol) {
         StringBuilder sb = new StringBuilder();
@@ -82,6 +107,13 @@ public class BerlinClickService {
                 .forEach(i -> sb.append(i <= numberLampsOn ? lampSymbol : "O"));
         return sb.toString();
     }
+
+    /**
+     *
+     *
+     * @param minutes
+     * @return
+     */
 
     public static String getMinutes(int minutes) {
         int numberTopMinutesLamps = minutes / 5;
@@ -95,45 +127,101 @@ public class BerlinClickService {
         return sb.toString();
     }
 
+    /**
+     *
+     * @param index
+     * @return
+     */
 
     public static String getMinuteLampColour(int index) {
         return index % 3 == 0 ? "R" : "Y";
     }
 
+    /**
+     *
+     * @param hours
+     * @param minutes
+     * @param seconds
+     * @return
+     */
+
     public static String berlinClock(String hours, String minutes, String seconds) {
         return seconds + hours + minutes;
     }
 
+    /**
+     *
+     * @param firstLine
+     * @return
+     */
     public static int getFirstLine(String firstLine) {
         return (firstLine == "Y") ? 0 : 1;
     }
 
+    /**
+     *
+     * @param secondLine
+     * @return
+     */
     public static int getSecondLine(String secondLine) {
 
         return Math.toIntExact(5 * secondLine.chars().filter(c -> c == 'R').count());
     }
 
+    /**
+     *
+     * @param thirdLine
+     * @return
+     */
     public static int getThirdLine(String thirdLine) {
         return Math.toIntExact(thirdLine.chars().filter(c -> c == 'R').count());
     }
 
+    /**
+     *
+     * @param fourthLine
+     * @return
+     */
     public static int getFourthLine(String fourthLine) {
         return (Math.toIntExact(5 * fourthLine.chars().filter(c -> (c == 'Y') || (c == 'R')).count()));
     }
 
+    /**
+     *
+     * @param fifthLine
+     * @return
+     */
     public static int getFifthLine(String fifthLine) {
         return Math.toIntExact(fifthLine.chars().filter(c -> c == 'Y').count());
     }
+
+    /**
+     *
+     * @param firstLine
+     * @return
+     */
 
     public static String getSecondsFromBerlinTime(String firstLine) {
         return "" + getFirstLine(firstLine);
     }
 
+    /**
+     *
+     * @param secondLine
+     * @param thirdLine
+     * @return
+     */
     public static String getHoursFromBerlinTime(String secondLine, String thirdLine) {
         int hours = getSecondLine(secondLine) + getThirdLine(thirdLine);
         return "" + hours;
     }
 
+    /**
+     *
+     * @param fourthLine
+     * @param fifthLine
+     * @return
+     */
     public static String getMinutesFromBerlinTime(String fourthLine, String fifthLine) {
         int minutes = getFourthLine(fourthLine) + getFifthLine(fifthLine);
         return "" + minutes;
